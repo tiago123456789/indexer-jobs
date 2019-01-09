@@ -1,0 +1,12 @@
+a, nav button {
+    color: white;
+}
+
+#submenu {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    text-align: center;
+    padding: 50px;
+    background: #0a79fa;
+    color: white;
+    font-size: 1.2em;
+}
