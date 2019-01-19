@@ -31,11 +31,28 @@ section {
     margin: auto;
 }
 
-main {
+#features_section {
     margin-top: 60px;
 }
 
-main p {
+#features_section p {
     margin: 25px 0px;
     font-size: .7em;
+}
+
+#details_indexer_jobs {
+    margin: 50px 0px 15px 0px;
+}
+
+#details_indexer_jobs h2 {
+    font-size: 1.2em;
+}
+
+#details_indexer_jobs p, #contacts p {
+    font-size: .7em;
+}
+
+#contacts a {
+    font-size: .7em;
+    text-transform: lowercase;
 }
