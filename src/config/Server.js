@@ -6,6 +6,7 @@ import morgan from "morgan";
 import path from "path";
 import routesApp from "../routes/index";
 import "./LoaderEnvironmentConfig";
+import "./Database";
 
 const app = express();
 const PORT = process.env.PORT;
