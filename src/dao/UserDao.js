@@ -7,7 +7,7 @@ export default class UserDao extends Dao {
         super(User);
     }
 
-    save() {
-        
+    async save(data) {
+        return await User.register(data, data.password);
     }
 }

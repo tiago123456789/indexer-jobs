@@ -21,5 +21,5 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose, { username: "email" });
 export default new mongoose.model("user", userSchema);
