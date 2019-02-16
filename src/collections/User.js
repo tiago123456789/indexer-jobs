@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import passportLocalMongoose from "passport-local-mongoose";
+import bcrypt from "bcrypt";
+import CONSTANTES from "../config/Constantes";
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -17,9 +18,11 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        set: function(value) {
+            return bcrypt.hashSync(value, CONSTANTES.SALT_ROUND);
+        }
     }
 });
 
-userSchema.plugin(passportLocalMongoose, { username: "email" });
 export default new mongoose.model("user", userSchema);

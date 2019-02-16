@@ -5,11 +5,19 @@ export default class UserController {
     constructor(bo) {
         this._bo = bo || new UserBo();
         this.save = this.save.bind(this);
+        this.authenticate = this.authenticate.bind(this);
+    }
+
+    async authenticate(request, response) {
+        const { email, password } = request.body;
+        const user = await this._bo.authenticate({ email, password });
+        request.session.user = user;
+        return response.redirect("/");
     }
 
     async save(request, response) {
         const newData = request.body;
         await this._bo.save(newData);
-        response.redirect("/user/login");
+        return response.redirect("/user/login");
     }
 }

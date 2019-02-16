@@ -8,6 +8,8 @@ export default (router) => {
         return response.render("user/login.ejs");
     });
 
+    router.post("/login", userController.authenticate);
+
     router.get("/register", (request, response) => {
         return response.render("user/register.ejs");
     });

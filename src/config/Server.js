@@ -4,10 +4,9 @@ import methodOverride from "method-override";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import path from "path";
-import passport from "passport";
-import { Strategy } from "passport-local";
 import User from "../collections/User";
 import routesApp from "../routes/index";
+import { checkAuthenticated } from "../middlewares/AuthMiddleware";
 import "./LoaderEnvironmentConfig";
 import "./Database";
 
@@ -33,18 +32,14 @@ app.use(session({
     cookie: { secure: process.env.SESSION_COOKIE_SECURE }
 }));
 
-// Settings middlewares passport.
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new Strategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
 // Settings middleware than logger http requests.
 app.use(morgan('dev'));
 
 // Settings directory files statics(assets).
 app.use(express.static(path.join(__dirname, "../public")))
+
+// Setting middleware check user authenticated.
+app.use(checkAuthenticated);
 
 // Loader routes on application.
 routesApp(app);
