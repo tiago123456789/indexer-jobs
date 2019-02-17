@@ -13,7 +13,7 @@ export default class UserBo {
 
     async authenticate(credencials) {
         const user = await this._userDao.getUserByEmail(credencials.email);
-        console.log(user);
+
         if (!user) {
             throw new AuthFailedException(MessageException.CODE_MESSAGE.AUTH_FAILED);
         }
@@ -24,7 +24,7 @@ export default class UserBo {
             throw new AuthFailedException(MessageException.CODE_MESSAGE.AUTH_FAILED);
         }
 
-        delete user.password
+        user.password = "";
         return user;
     }
 

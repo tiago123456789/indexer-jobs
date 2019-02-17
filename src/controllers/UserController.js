@@ -9,10 +9,16 @@ export default class UserController {
     }
 
     async authenticate(request, response) {
-        const { email, password } = request.body;
-        const user = await this._bo.authenticate({ email, password });
-        request.session.user = user;
-        return response.redirect("/");
+        try {
+            const { email, password } = request.body;
+            const user = await this._bo.authenticate({ email, password });
+            request.session.user = user;
+            console.log(request.session.user);
+            return response.redirect("/");
+        } catch (e) {
+            console.log(e);
+        }
+
     }
 
     async save(request, response) {

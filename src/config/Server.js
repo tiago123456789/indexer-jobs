@@ -28,8 +28,7 @@ app.use(methodOverride("_method"));
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.SESSION_COOKIE_SECURE }
+    saveUninitialized: true
 }));
 
 // Settings middleware than logger http requests.
@@ -41,7 +40,18 @@ app.use(express.static(path.join(__dirname, "../public")))
 // Setting middleware check user authenticated.
 app.use(checkAuthenticated);
 
+
+app.use((request, response, next) => {
+    if (request.session.user) {
+        app.locals.user = request.session.user;
+    } else {
+        app.locals.user = null;
+    }
+    next();
+});
+
 // Loader routes on application.
 routesApp(app);
+
 
 export default app;
