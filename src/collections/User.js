@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import CONSTANTES from "../config/Constantes";
+import hashPassword from "./middlewares/HashPassword";
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -19,10 +19,9 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        set: function(value) {
-            return bcrypt.hashSync(value, CONSTANTES.SALT_ROUND);
-        }
     }
 });
+
+userSchema.pre("save", hashPassword)
 
 export default new mongoose.model("user", userSchema);

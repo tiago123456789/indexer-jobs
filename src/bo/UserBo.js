@@ -12,13 +12,13 @@ export default class UserBo {
     }
 
     async authenticate(credencials) {
-        const user = await this._userDao.getUserByEmail(credencials.eamil);
+        const user = await this._userDao.getUserByEmail(credencials.email);
         console.log(user);
         if (!user) {
             throw new AuthFailedException(MessageException.CODE_MESSAGE.AUTH_FAILED);
         }
 
-        // const isPasswordValid = await bcrypt.compare(credencials.password, user.password);
+        const isPasswordValid = await bcrypt.compare(credencials.password, user.password);
 
         if (!isPasswordValid) {
             throw new AuthFailedException(MessageException.CODE_MESSAGE.AUTH_FAILED);

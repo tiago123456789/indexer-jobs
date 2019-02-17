@@ -8,6 +8,6 @@ export default class UserDao extends Dao {
     }
 
     async getUserByEmail(email) {
-        return await User.find({ email: email })
+        return await User.find({ email: email });
     }
 }
