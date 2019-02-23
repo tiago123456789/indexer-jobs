@@ -25,4 +25,9 @@ export default class UserController {
         await this._bo.save(newData);
         return response.redirect("/user/login");
     }
+
+    async show(request, response) {
+        const id = request.params.id;
+        
+    }
 }

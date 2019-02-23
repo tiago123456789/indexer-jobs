@@ -11,6 +11,13 @@ export default class UserBo {
         this._userDao = dao || new UserDao();
     }
 
+    async findById(id) {
+        const user = await this._userDao.findById(id);
+        if (!user) {
+            throw new NaoE
+        }
+    }
+
     async authenticate(credencials) {
         const user = await this._userDao.getUserByEmail(credencials.email);
 
