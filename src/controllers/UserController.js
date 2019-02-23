@@ -13,7 +13,6 @@ export default class UserController {
             const { email, password } = request.body;
             const user = await this._bo.authenticate({ email, password });
             request.session.user = user;
-            console.log(request.session.user);
             return response.redirect("/");
         } catch (e) {
             console.log(e);
