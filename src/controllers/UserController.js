@@ -1,4 +1,5 @@
 import UserBo from "../bo/UserBo";
+import MessageException from '../exceptions/MessageException';
 
 export default class UserController {
 
@@ -6,6 +7,8 @@ export default class UserController {
         this._bo = bo || new UserBo();
         this.save = this.save.bind(this);
         this.authenticate = this.authenticate.bind(this);
+        this.show = this.show.bind(this);
+        this._messageException = new MessageException();
     }
 
     async authenticate(request, response) {
@@ -15,7 +18,7 @@ export default class UserController {
             request.session.user = user;
             return response.redirect("/");
         } catch (e) {
-            console.log(e);
+            return response.json({ msg: e.message})
         }
 
     }
@@ -28,6 +31,8 @@ export default class UserController {
 
     async show(request, response) {
         const id = request.params.id;
-        
+        const user = await this._bo.findById(id);
+        user.password = "";
+        return response.render("user/show", { user });
     }
 }

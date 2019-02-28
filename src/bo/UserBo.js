@@ -3,6 +3,7 @@ import UserCollection from "../collections/User";
 import User from "../collections/User";
 import bcrypt from "bcrypt";
 import AuthFailedException from "../exceptions/AuthFailedException";
+import NotFoundException from "../exceptions/NotFoundException";
 import MessageException from "../exceptions/MessageException";
 
 export default class UserBo {
@@ -14,8 +15,10 @@ export default class UserBo {
     async findById(id) {
         const user = await this._userDao.findById(id);
         if (!user) {
-            throw new NaoE
+            throw new NotFoundException(MessageException.CODE_MESSAGE.NOT_FOUND);
         }
+
+        return user;
     }
 
     async authenticate(credencials) {

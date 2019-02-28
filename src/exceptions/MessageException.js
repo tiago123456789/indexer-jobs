@@ -1,22 +1,19 @@
 class MessageException {
 
     static CODE_MESSAGE = {
-        "AUTH_FAILED": "AUTH_FAILED"
+        "AUTH_FAILED": "AUTH_FAILED",
+        "NOT_FOUND": "NOT_FOUND"
     }
     
     constructor() {
         this._messagesBasedCode = {
-            [MessageException.CODE_MESSAGE.AUTH_FAILED] : "Datas invalids!"
+            [MessageException.CODE_MESSAGE.AUTH_FAILED] : "Datas invalids!",
+            [MessageException.CODE_MESSAGE.NOT_FOUND] : "Register not found!",            
         }   
     }
     
     getMessage(code) {
-        const existCode = this._messagesBasedCode[code];
-        if (existCode) {
-            return this._messagesBasedCode[existCode];
-        }
-
-        return "";
+        return (this._messagesBasedCode[code] || "");
     }
 }
 
