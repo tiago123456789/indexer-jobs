@@ -21,6 +21,11 @@ export default class UserBo {
         return user;
     }
 
+    async update(id, dataModified) {
+        await this.findById(id);
+        this._userDao.update(id, dataModified);
+    }
+
     async authenticate(credencials) {
         const user = await this._userDao.getUserByEmail(credencials.email);
 

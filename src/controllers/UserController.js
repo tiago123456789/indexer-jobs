@@ -30,9 +30,19 @@ export default class UserController {
     }
 
     async show(request, response) {
-        const { _id } = request.session.user;
-        const user = await this._bo.findById(_id);
+        const user = await this._bo.findById(this._getIdUserAuthenticated());
         user.password = "";
         return response.render("user/show", { user });
+    }
+
+    async update(request, response) {
+        const datasModified = request.body;
+        await this._bo.update(this._getIdUserAuthenticated(), datasModified);
+        // Redirect to anyone route.
+    }
+
+    _getIdUserAuthenticated() {
+        const { _id } = request.session.user;
+        return _id;
     }
 }

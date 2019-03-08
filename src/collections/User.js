@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.pre("save", hashPassword)
+userSchema.pre("save", hashPassword);
+userSchema.pre("update", hashPassword);
 
 export default new mongoose.model("user", userSchema);
