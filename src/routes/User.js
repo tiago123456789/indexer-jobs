@@ -4,7 +4,7 @@ const userController = new UserController();
 
 export default (router) => {
 
-    router.get("/:id/show", userController.show);
+    router.get("/show", userController.show);
     
     router.get("/login", (request, response) => {
         return response.render("user/login.ejs");

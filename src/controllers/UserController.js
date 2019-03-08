@@ -30,8 +30,8 @@ export default class UserController {
     }
 
     async show(request, response) {
-        const id = request.params.id;
-        const user = await this._bo.findById(id);
+        const { _id } = request.session.user;
+        const user = await this._bo.findById(_id);
         user.password = "";
         return response.render("user/show", { user });
     }
