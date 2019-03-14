@@ -5,24 +5,14 @@ const userController = new UserController();
 export default (router) => {
 
     router.get("/show", userController.show);
-    
-    router.get("/login", (request, response) => {
-        return response.render("user/login.ejs");
-    });
-
-    router.get("/logout", (request, response) => {
-        request
-            .session
-            .destroy(() => response.redirect("/"));
-    });
-
-    router.post("/login", userController.authenticate);
-
-    router.get("/register", (request, response) => {
-        return response.render("user/register.ejs");
-    });
-
+    router.get("/login", userController.loadPageLogin);
     router.post("/register", userController.save);
+    router.post("/login", userController.authenticate);
+    router.get("/logout", userController.logout);
+    router.get("/register", userController.loadPageRegister);
+    router.put("/edit", userController.update);
+    router.get("/edit", userController.loadPageEdit);
+    
 
     return router;
 }

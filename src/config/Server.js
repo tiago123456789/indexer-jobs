@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Settings template engine.
-app.set("views", path.join(__dirname, "../views"));
+app.set("views", path.join(__dirname, "../../views"));
 app.set("view engine", "ejs");
 
 // Settings middlewares do parse data to json.
@@ -35,7 +35,7 @@ app.use(session({
 app.use(morgan('dev'));
 
 // Settings directory files statics(assets).
-app.use(express.static(path.join(__dirname, "../public")))
+app.use(express.static(path.join(__dirname, "../../public")))
 
 // Setting middleware check user authenticated.
 app.use(checkAuthenticated);

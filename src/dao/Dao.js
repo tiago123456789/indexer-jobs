@@ -20,7 +20,7 @@ export default class Dao {
     }
 
     async update(id, dataModified) {
-        return await this.collection.findByIdAndUpdate($id, { $set: { ...dataModified }});
+        return await this._collection.findByIdAndUpdate(id, { $set: { ...dataModified }});
     } 
 
     async remove(id) {
