@@ -20,7 +20,7 @@ export default class UserController {
         return response.render("user/login");
     }
 
-    loadPageRegister() {
+    loadPageRegister(request, response) {
         return response.render("user/register");
     }
 
@@ -35,7 +35,7 @@ export default class UserController {
             request.session.user = user;
             return response.redirect("/");
         } catch (e) {
-            return response.json({ msg: e.message})
+            return response.json({ msg: e.message })
         }
 
     }

@@ -60,3 +60,7 @@ section {
 a {
     cursor: pointer;
 }
+
+.card {
+    margin-bottom: 5px;
+}

@@ -6,7 +6,6 @@ import morgan from "morgan";
 import path from "path";
 import User from "../collections/User";
 import routesApp from "../routes/index";
-import { checkAuthenticated } from "../middlewares/AuthMiddleware";
 import "./LoaderEnvironmentConfig";
 import "./Database";
 
@@ -36,10 +35,6 @@ app.use(morgan('dev'));
 
 // Settings directory files statics(assets).
 app.use(express.static(path.join(__dirname, "../../public")))
-
-// Setting middleware check user authenticated.
-app.use(checkAuthenticated);
-
 
 app.use((request, response, next) => {
     if (request.session.user) {
