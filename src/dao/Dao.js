@@ -6,6 +6,11 @@ export default class Dao {
         this._collection = collection
     }
 
+    async findAllPaginated(pageCurrent, qtdItensReturned = 10) {
+        const skip = (pageCurrent - 1) * qtdItensReturned;
+        return await this._collection.find({}, {}, { skip: skip, limit: qtdItensReturned });
+    }
+
     async findAll() {
         return await this._collection.find({});
     }

@@ -7,8 +7,7 @@ class Crawler {
         this._site = "https://hipsters.jobs/jobs/";
     }
 
-
-    getContent(page) {
+    execute(page = 15) {
         return axios
             .get(this._site + `?p=${page}`)
             .then((response) => response.data)

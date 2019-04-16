@@ -6,6 +6,8 @@ import morgan from "morgan";
 import path from "path";
 import User from "../collections/User";
 import routesApp from "../routes/index";
+import scheduleder from "./Scheduleder";
+import "../task/index";
 import "./LoaderEnvironmentConfig";
 import "./Database";
 
@@ -44,6 +46,9 @@ app.use((request, response, next) => {
     }
     next();
 });
+
+// Initialize scheduleder.
+scheduleder.execute();
 
 // Loader routes on application.
 routesApp(app);
