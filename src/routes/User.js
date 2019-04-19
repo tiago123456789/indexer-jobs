@@ -11,8 +11,8 @@ export default (router) => {
     router.post("/login", userController.authenticate);
     router.get("/logout", AuthMiddleware.checkAuthenticated, userController.logout);
     router.get("/register", userController.loadPageRegister);
-    router.put("/edit", AuthMiddleware.checkAuthenticated, userController.update);
-    router.get("/edit", AuthMiddleware.checkAuthenticated,userController.loadPageEdit);
+    router.post("/edit", AuthMiddleware.checkAuthenticated, userController.update);
+    router.get("/edit", AuthMiddleware.checkAuthenticated, userController.loadPageEdit);
     
 
     return router;

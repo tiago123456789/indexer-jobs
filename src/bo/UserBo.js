@@ -13,6 +13,7 @@ export default class UserBo {
     }
 
     async findById(id) {
+        console.log(id);
         const user = await this._userDao.findById(id);
         if (!user) {
             throw new NotFoundException(MessageException.CODE_MESSAGE.NOT_FOUND);

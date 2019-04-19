@@ -59,8 +59,9 @@ export default class UserController {
     }
 
     async loadPageEdit(request, response) {
-        const user = this._bo.findById(this._getIdUserAuthenticated(request));
-        return response.render("user/edit", { user });
+        const user = await this._bo.findById(this._getIdUserAuthenticated(request));
+        user.password = "";
+        return response.render("user/edit", { user: user });
     }
 
     _getIdUserAuthenticated(request) {

@@ -3,7 +3,6 @@
         <h1 class="text-center">Edit account</h1>
         <div class="row">
             <form class="col-md-6" style="margin: 0px auto;" action="/user/edit" method="POST">
-                <input type="hidden" name="_method" value="PUT" />
                 <div class="form-group">
                     <label for="">Username:</label>
                     <input type="text" name="username" value="<%= user.username %>" 
@@ -13,28 +12,19 @@
                 <div class="form-group">
                     <label for="">Cellphone:</label>
                     <input type="tel" name="cellphone" 
-                    value="<%= user.cellphone %>"
+                    value='<%= user.cellphone %>'
                     class="form-control" />
                 </div>
 
                 <div class="form-group">
                     <label for="">Email:</label>
                     <input type="email" name="email"
-                    value="<%= user.email %>"
+                    value='<%= user.email %>'
                     class="form-control" />
                 </div>
 
-
                 <div class="form-group">
-                    <label for="">Password:</label>
-                    <input type="password" name="password" 
-                    value="<%= user.password %>"
-                    class="form-control" />
-                </div>
-
-                
-                <div class="form-group">
-                    <input type="submit" class="btn btn-block btn-primary" value="register"/>
+                    <input type="submit" class="btn btn-block btn-primary" value="Save"/>
                 </div>
             </form>
         </div>
