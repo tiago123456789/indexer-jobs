@@ -1,4 +1,5 @@
 .env
 .env-prd
 .env-test
+build
 node_modules
