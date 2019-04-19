@@ -10,6 +10,10 @@ export default class JobBo {
         return await this._dao.findAllPaginated(pageCurrent, qtdItensReturned);
     }
 
+    getEnterprisesGreatherQuantityJobs(limitEnterprisesReturned = 5) {
+        return this._dao.getEnterprisesGreatherQuantityJobs(limitEnterprisesReturned);
+    }
+
     insertMany(newRegisters) {
         return this._dao.insertMany(newRegisters);
     }
