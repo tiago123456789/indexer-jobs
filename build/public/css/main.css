@@ -1,0 +1,66 @@
+* {
+    font-family: 'Roboto Slab', serif;
+}
+
+body {
+    background: rgba(0, 0, 0, .07);
+}
+
+a, a:hover, nav button {
+    color: white;
+}
+
+#submenu {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    text-align: center;
+    padding: 50px;
+    background: #0a79fa;
+    color: white;
+    font-size: 1.2em;
+}
+
+section {
+    margin-top: 50px;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#btn_actions {
+    width: 25%;
+    margin: auto;
+}
+
+#features_section {
+    margin-top: 60px;
+}
+
+#features_section p {
+    margin: 25px 0px;
+    font-size: .7em;
+}
+
+#details_indexer_jobs {
+    margin: 50px 0px 15px 0px;
+}
+
+#details_indexer_jobs h2 {
+    font-size: 1.2em;
+}
+
+#details_indexer_jobs p, #contacts p {
+    font-size: .7em;
+}
+
+#contacts a {
+    font-size: .7em;
+    text-transform: lowercase;
+}
+
+a {
+    cursor: pointer;
+}
+
+.card {
+    margin-bottom: 5px;
+}

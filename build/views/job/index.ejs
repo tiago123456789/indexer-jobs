@@ -1,0 +1,45 @@
+<% include ../partials/header  %>
+    <div class="container">
+        <h1 class="text-center">Jobs</h1>
+        <div class="row">
+            <% jobs.forEach(job => { %>
+                <div class="card col-md-12">
+                    <div class="card-body">
+                        <h3>
+                            <%= job.title %>
+                        </h3>
+                        <p>
+                            <%= job.description %>
+                        </p>
+                        <% if (user) { %>
+                            <a href="<%= job.url %>" class="btn btn-primary">Ver detalhes</a>
+                            <% } else { %>
+                                <a href="/user/register" class="btn btn-primary">Registrar-se</a>
+                                <% } %>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+        <div class="row">
+            <div class="offset-md-5">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="/job?page=<%= pagePrevious %>">Anterior</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="/job?page=1">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="/job?page=1">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="/job?page=<%= pageNext %>">Proxima</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+    <% include ../partials/footer %>

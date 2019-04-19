@@ -4,9 +4,9 @@
   "description": "Indexador de vagas",
   "main": "./src/index.js",
   "scripts": {
-    "start": "npm run build && nodejs ./src/index.js NODE_ENV=prd",
+    "start": "npm run build && pm2 start ./src/index.js NODE_ENV=prd",
     "start:dev": "nodemon ./src/index.js --exec babel-node --presets es2015,stage-2 NODE_ENV=dev",
-    "build": "babel ./src -d ./build",
+    "build": "babel ./src -d ./build --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tiago rosa da costa <tiagorosadacost@gmail.com>",
